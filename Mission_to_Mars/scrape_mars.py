@@ -3,6 +3,7 @@ from splinter import Browser
 from bs4 import BeautifulSoup as bs
 import time
 import pandas as pd
+from flask_pymongo import PyMongo
 from flask import Flask, render_template, redirect
 from webdriver_manager.chrome import ChromeDriverManager
 
@@ -58,18 +59,18 @@ def scrape_all():
         hemisphere.append(images_title)
 
     # store results
-    mars_data = {
+    mars_data_d = {
         "news1head": news1head,
         "new1con": new1con,
         "final_image": final_image,
         "table2": table2,
         "hemisphere": hemisphere
     }
-    print("Data:", mars_data)
+    print("Data:", mars_data_d)
 
     browser.quit()
 
-    return mars_data
+    return mars_data_d
 
 if __name__ == "__main__":
 
